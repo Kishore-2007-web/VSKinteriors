@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio
+    
+  </title>
+
+  <style>
+    body {
+            height: 1950px;
+            margin: 0;
+             
+      font-family: 'Times New Roman', Times, serif;
+      background: linear-gradient(270deg, #313131, #474747, #383838, #2a2a2a);
+      background-size: 800% 800%; /* allows animation space */
+      animation: gradientMove 10s ease infinite; /* animation effect */
+          text-decoration-color: #ddd;
+            text-align: center; /* Center content horizontally */
+        }
+
+         @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      border: 8px solid transparent;
+      border-image: linear-gradient(135deg, #9C6806, #D9BE14, #9C6806) 1;
+      filter: blur(12px);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+      animation: moveGradient 8s ease infinite;
+    }
+
+    @keyframes moveGradient {
+      0% { border-image-source: linear-gradient(135deg, #9C6806, #D9BE14, #9C6806); }
+      50% { border-image-source: linear-gradient(315deg, #9C6806, #9C6806, #D9BE14); }
+      100% { border-image-source: linear-gradient(135deg, #D9BE14, #9C6806, #9C6806); }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      border: 5px solid transparent;
+      border-image: linear-gradient(135deg, #9C6806, #D9BE14, #9C6806) 1;
+      pointer-events: none;
+      z-index: 1;
+      animation: moveGradient 8s ease infinite;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      top: 30px;
+      right: 70px;
+      z-index: 10;
+    }
+  button {
+      background: transparent;
+      border: 3px solid #D9BE14;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px;
+      font-family: 'Times New Roman', Times, serif;
+      cursor: pointer;
+      transition: all 1s ease;
+    }
+
+
+    button span {
+      background: linear-gradient(90deg, #9C6806, #D9BE14, #9C6806 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .button2:hover {
+      background-color: #2e2e2e;
+      border-color: #D9BE14;
+    }
+
+    /* HERO SECTION (where explosion is fixed) */
+    .hero {
+      position: relative;
+      height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Canvas inside hero only */
+    #explosion {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .imgpos {
+      position: relative;
+      width: 700px;
+      height: 700px;
+      z-index: 2;
+    }
+
+    .gradient-text2 {
+      font-size: 100px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #9C6806, #D9BE14, #9C6806 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Times New Roman', Times, serif;
+        margin-top: 0px;
+    text-align: center;
+
+    }
+        .gradient-text3 {
+      font-size: 70px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #9C6806, #D9BE14, #9C6806 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Times New Roman', Times, serif;
+        margin-top: 0px;
+    text-align: center;
+
+    }
+
+    .pcolor {
+      font-size: 30px;
+      color: #FFFFFF;
+      max-width: 1500px;
+      margin: 20px auto;
+      line-height: 1.6;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+  </style>
+</head>
+<body>
+
+
+
+
+
+
+  <div class="nav-buttons">
+    <button onclick="window.location.href='port.html.html'" class="button2"><span>Home</span></button>
+    <button onclick="window.location.href='project.html.html'" class="button2"><span>Projects</span></button>
+    <button onclick="window.location.href='review.html.html'" class="button2"><span>Reviews</span></button>
+    <button onclick="window.location.href='index.html.html'" class="button2"><span>Main-web</span></button>
+  </div>
+
+  <!-- ✅ HERO section with fixed explosion background -->
+  <section class="hero">
+    <canvas id="explosion"></canvas>
+    <img src="logo.png" alt="Logo" class="imgpos">
+  </section>
+
+
+
+
+  <pre class="gradient-text2">VSK INTERIORS</pre>
+  <pre class="gradient-text3">Welcome to our Portfolio</pre>
+<pre class="pcolor ">At VSK Interiors, design isn’t just our profession — it’s our heritage. Rooted in a proud lineage of skilled carpenters for
+generations, we’ve carried forward the artistry of fine woodwork and blended it with modern interior design innovation.
+What began as a family tradition of craftsmanship has evolved into a full-fledged interior brand known for precision, creativity,
+and timeless beauty.We believe every space should tell a story — your story. From handcrafted wardrobes and elegant 
+modular kitchens to warm living rooms and spiritual pooja spaces, our designs reflect the perfect balance between traditional 
+craftsmanship and contemporary style.Every piece we create, every corner we design, is built with heart, experience, and 
+attention to detail- because for us, it’s not just about interiors; it’s about building lasting impressions that stand the test of time.
+
+At VSK Interiors, we don’t just design homes — we craft legacies.</pre>
+  <script>
+  const canvas = document.getElementById("explosion");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+
+  const explosionRadius = 320;
+  const particleCount = 280;
+  const particleSize = 25;
+  const glowStrength = 40;
+  const glowColor = "#FFD700";
+  const particleImage = new Image();
+  particleImage.src = "logo.png";
+
+  function resize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  class Particle {
+    constructor(x, y) {
+      this.centerX = x;
+      this.centerY = y;
+      this.angle = Math.random() * 2 * Math.PI;
+      this.distance = Math.random() * explosionRadius;
+      this.x = x + Math.cos(this.angle) * this.distance;
+      this.y = y + Math.sin(this.angle) * this.distance;
+      this.vx = (Math.random() - 0.5) * 2.2;
+      this.vy = (Math.random() - 0.5) * 2.2;
+      this.size = Math.random() * 10 + particleSize / 2;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      const dx = this.x - this.centerX;
+      const dy = this.y - this.centerY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > explosionRadius) {
+        const angle = Math.atan2(dy, dx);
+        this.x = this.centerX + Math.cos(angle) * explosionRadius;
+        this.y = this.centerY + Math.sin(angle) * explosionRadius;
+        this.vx *= -0.8;
+        this.vy *= -0.8;
+      }
+    }
+
+    draw() {
+      if (particleImage.complete) {
+        ctx.save();
+        ctx.shadowBlur = glowStrength;
+        ctx.shadowColor = glowColor;
+        ctx.drawImage(particleImage, this.x, this.y, this.size, this.size);
+        ctx.restore();
+      }
+    }
+  }
+
+  function explodeOnce(x, y) {
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle(x, y));
+    }
+    animate();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("load", () => {
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    explodeOnce(centerX, centerY);
+  });
+  </script>
+</body>
+</html>

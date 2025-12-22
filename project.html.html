@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio-projects</title>
+  <meta charset="UTF-8">
+  <style>
+  body {
+            height: 2000px;
+            margin: 0;
+             
+      font-family: 'Times New Roman', Times, serif;
+      background: linear-gradient(270deg, #313131, #474747, #383838, #2a2a2a);
+      background-size: 800% 800%; /* allows animation space */
+      animation: gradientMove 20s ease infinite; /* animation effect */
+          
+            text-align: center; /* Center content horizontally */
+        }
+
+         @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+         }     body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      border: 5px solid transparent;
+      border-image: linear-gradient(135deg, #9C6806, #D9BE14, #9C6806 ) 1;
+      pointer-events: none;
+      z-index: 1;
+      animation: moveGradient 8s ease infinite;
+    }
+
+    /* Glowing effect (blurred copy of the gradient) */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      border: 8px solid transparent;
+      border-image: linear-gradient(135deg, #9C6806, #D9BE14, #9C6806 ) 1;
+      filter: blur(12px);      /* glow softness */
+      opacity: 0.7;            /* glow intensity */
+      pointer-events: none;
+      z-index: 0;
+      animation: moveGradient 8s ease infinite;
+    }
+
+    /* Animate gradient direction change */
+    @keyframes moveGradient {
+      0% { border-image-source: linear-gradient(135deg,  #9C6806, #D9BE14, #9C6806 ); }
+      50% { border-image-source: linear-gradient(315deg, #9C6806,  #9C6806,#D9BE14 ); }
+      100% { border-image-source: linear-gradient(135deg,#D9BE14, #9C6806, #9C6806 ); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 600px;
+    }
+        
+
+    /* Navigation buttons */
+    .nav-buttons {
+      position: absolute;
+      top: 30px;
+      right: 70px;
+    }
+
+    button {
+      background: transparent;
+      border: 3px solid #D9BE14;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px;
+      font-family: 'Times New Roman', Times, serif;
+      cursor: pointer;
+      transition: all 1s ease;
+    }
+
+    button span {
+      background: linear-gradient(90deg, #9C6806, #D9BE14, #9C6806 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .button2:hover {
+      background-color: #000;
+      border-color: #D9BE14;
+    }
+
+    /* Gradient text titles */
+    .gradient-text {
+      font-size: 30px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #9C6806, #D9BE14, #9C6806 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Times New Roman', Times, serif;
+      margin-right: 1300px;
+      text-shadow: #D9BE14 0px 0px 2px;
+    }
+    .gradient-text2 {
+      font-size: 100px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #9C6806, #D9BE14, #9C6806 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Times New Roman', Times, serif;
+        margin-top: 200px;
+    text-align: center;
+
+    }
+
+    /* Movable image section */
+    .image-section {
+      position: absolute;
+      width: 80%;
+      cursor: grab;
+    }
+
+    /* Scroll container */
+    .scroll-container {
+      display: flex;
+      gap: 15px;
+      width: 1300px;
+      height: 150px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(217, 190, 20, 0.2);
+      user-select: none;
+      white-space: nowrap;
+      margin-bottom: 30px;
+      margin-left: 120px;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Images */
+    .scroll-container img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-container img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #D9BE14, 0 0 50px #9C6806;
+    }
+
+    /* Fullscreen overlay */
+    #fullscreenOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+          
+      z-index: 1000;
+    }
+
+    #fullscreenOverlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 80px;
+      box-shadow: 0 0 30px #D9BE14;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+   <div class="nav-buttons">
+    <button onclick="window.location.href='port.html.html'" class="button2"><span>Home</span></button>
+    <button onclick="window.location.href='project.html.html'" class="button2"><span>Projects</span></button>
+    <button onclick="window.location.href='review.html.html'" class="button2"><span>Reviews</span></button>
+    <button onclick="window.location.href='index.html.html'" class="button2"><span>Main-web</span></button>
+  </div>
+  
+  <pre class="gradient-text2">  PROJECTS</pre>
+  <!-- Titles -->
+  <pre class="gradient-text" >
+
+      KITCHEN</pre>
+  <pre class="gradient-text">
+    
+    
+    
+    
+    
+
+    
+           BEDROOMS</pre>
+  <pre class="gradient-text">
+    
+    
+    
+    
+    
+    
+
+              WARDROBES</pre>
+  <pre class="gradient-text">
+    
+    
+    
+    
+    
+    
+    
+            FURNITURE
+   </pre>
+  <pre class="gradient-text">
+    
+    
+    
+
+
+
+                   CRAFTED SPACE</pre>
+
+  <!-- Image Sections -->
+  <div class="image-section" style="top:500px; left:100px;">
+    <div class="scroll-container">
+      
+      <img src="port-proj/IMG-20251013-WA0001.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0004.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0003.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0005.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0006.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0008.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0009.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0010.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0011.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0012.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0013.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0014.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0015.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">  
+      <img src="port-proj/IMG-20251013-WA0016.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0019.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0041.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0042.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0043.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0044.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0046.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0045.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+    </div>
+
+  <div class="image-section" style="top:300px; left:5px;">
+    <div class="scroll-container">
+
+      <img src="port-proj/IMG-20251013-WA0017.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+       <img src="port-proj/IMG-20251013-WA0018.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+        <img src="port-proj/IMG-20251013-WA0020.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+         <img src="port-proj/IMG-20251013-WA0021.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+          <img src="port-proj/IMG-20251013-WA0024.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+           <img src="port-proj/IMG-20251013-WA0026.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+            <img src="port-proj/IMG-20251013-WA0027.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+             <img src="port-proj/IMG-20251013-WA0029.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+               <img src="port-proj/IMG-20251013-WA0032.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+                <img src="port-proj/IMG-20251013-WA0034.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+                 <img src="port-proj/IMG-20251013-WA0037.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+                  <img src="port-proj/IMG-20251013-WA0039.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+                    <img src="port-proj/IMG-20251013-WA0040.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+                      <img src="port-proj/IMG-20251013-WA0036.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">   
+
+    </div>
+  </div>
+
+  <div class="image-section" style="top:600px; left:5px;">
+    <div class="scroll-container">
+  <img src="port-proj/IMG-20251013-WA0022.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+   <img src="port-proj/IMG-20251013-WA0023.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+    <img src="port-proj/IMG-20251013-WA0025.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+     <img src="port-proj/IMG-20251013-WA0028.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+      <img src="port-proj/IMG-20251013-WA0030.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+        <img src="port-proj/IMG-20251013-WA0033.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+         
+    </div>
+  </div>
+
+  <div class="image-section" style="top:900px; left:5px;">
+    <div class="scroll-container">
+   <img src="port-proj/IMG-20251013-WA0035.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+    <img src="port-proj/IMG-20251013-WA0038.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+     <img src="port-proj/IMG-20251013-WA0031.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+    
+  
+  
+    </div>
+  </div>
+
+  <div class="image-section" style="top:1200px; left:5px;">
+    <div class="scroll-container">
+     
+     
+     
+ <img src="port-proj/IMG-20251013-WA0002.jpg" alt="Kitchen Design" onclick="openFullscreen(this)">
+        
+    
+    </div>
+  </div>
+
+  <!-- Fullscreen overlay -->
+  <div id="fullscreenOverlay">
+    <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+    <img id="fullscreenImg">
+  </div>
+
+  <script>
+    function openFullscreen(img) {
+      const overlay = document.getElementById('fullscreenOverlay');
+      const fullscreenImg = document.getElementById('fullscreenImg');
+      fullscreenImg.src = img.src;
+      overlay.style.display = 'flex';
+    }
+
+    function closeFullscreen() {
+      document.getElementById('fullscreenOverlay').style.display = 'none';
+    }
+
+    // Drag scroll for all scroll containers
+    const containers = document.querySelectorAll('.scroll-container');
+    containers.forEach(scrollContainer => {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      scrollContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+        scrollContainer.style.cursor = 'grabbing';
+      });
+
+      scrollContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+        scrollContainer.style.cursor = 'grab';
+      });
+
+      scrollContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        scrollContainer.style.cursor = 'grab';
+      });
+
+      scrollContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 0.3;
+        scrollContainer.scrollLeft = scrollLeft - walk;
+      });
+    });
+  </script>
+
+</body>
+</html>
